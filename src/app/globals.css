@@ -66,3 +66,20 @@ body {
   overflow-x: auto;
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
+
+.prose :where(a[href^="#"]) {
+  text-decoration: none;
+}
+
+.prose :where(h2 a, h3 a) {
+  color: inherit;
+}
+
+.prose :where(h2 a:hover, h3 a:hover) {
+  text-decoration: underline;
+}
+
+.prose :where(pre code) {
+  background: transparent;
+  padding: 0;
+}
