@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { site } from '@/config/site';
 
 const links = [
-  { href: '/now', label: 'Now' },
+  { href: '/about', label: 'About' },
   { href: '/projects', label: 'Projects' },
   { href: '/blog', label: 'Blog' },
   { href: '/requests', label: 'Requests' },
