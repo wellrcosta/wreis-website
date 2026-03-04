@@ -26,5 +26,6 @@ export async function compileMdx<TFrontmatter extends Record<string, unknown>>(
   return {
     content,
     frontmatter: parsed.data as TFrontmatter,
+    source: parsed.content,
   };
 }
