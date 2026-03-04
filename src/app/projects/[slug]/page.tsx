@@ -1,30 +1,43 @@
+import path from 'node:path';
+
 import { notFound } from 'next/navigation';
 
 import { Badge } from '@/components/ui/badge';
-import { getAllProjectSlugs, getProjectBySlug } from '@/lib/projects/projects';
+import { getAllProjectSlugs } from '@/lib/projects/projects';
+import type { ProjectFrontmatter } from '@/lib/projects/types';
+import { compileMdx } from '@/lib/mdx';
 
 export function generateStaticParams() {
   return getAllProjectSlugs().map((slug) => ({ slug }));
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  let project: ReturnType<typeof getProjectBySlug>;
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
+  const fullPath = path.join(
+    process.cwd(),
+    'src',
+    'content',
+    'projects',
+    `${params.slug}.mdx`,
+  );
 
+  let compiled: Awaited<ReturnType<typeof compileMdx<ProjectFrontmatter>>>;
   try {
-    project = getProjectBySlug(params.slug);
+    compiled = await compileMdx<ProjectFrontmatter>(fullPath);
   } catch {
     notFound();
   }
 
+  const { content, frontmatter } = compiled;
+
   return (
     <main className="mx-auto max-w-3xl space-y-8 px-6 py-16">
       <header className="space-y-3">
-        <h1 className="text-3xl font-bold">{project.frontmatter.title}</h1>
-        <p className="text-muted-foreground">{project.frontmatter.summary}</p>
+        <h1 className="text-3xl font-bold">{frontmatter.title}</h1>
+        <p className="text-muted-foreground">{frontmatter.summary}</p>
 
-        {project.frontmatter.stack?.length ? (
+        {frontmatter.stack?.length ? (
           <div className="flex flex-wrap gap-2">
-            {project.frontmatter.stack.map((s) => (
+            {frontmatter.stack.map((s) => (
               <Badge key={s} variant="secondary">
                 {s}
               </Badge>
@@ -33,23 +46,15 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         ) : null}
 
         <div className="text-sm">
-          {project.frontmatter.links?.repo ? (
-            <a
-              className="underline"
-              href={project.frontmatter.links.repo}
-              target="_blank"
-            >
+          {frontmatter.links?.repo ? (
+            <a className="underline" href={frontmatter.links.repo} target="_blank">
               Repository
             </a>
           ) : null}
-          {project.frontmatter.links?.live ? (
+          {frontmatter.links?.live ? (
             <>
               {' · '}
-              <a
-                className="underline"
-                href={project.frontmatter.links.live}
-                target="_blank"
-              >
+              <a className="underline" href={frontmatter.links.live} target="_blank">
                 Live
               </a>
             </>
@@ -57,20 +62,18 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </header>
 
-      {project.frontmatter.highlights?.length ? (
+      {frontmatter.highlights?.length ? (
         <section className="space-y-2">
           <h2 className="text-lg font-semibold">Highlights</h2>
           <ul className="text-muted-foreground list-disc space-y-1 pl-5 text-sm">
-            {project.frontmatter.highlights.map((h) => (
+            {frontmatter.highlights.map((h) => (
               <li key={h}>{h}</li>
             ))}
           </ul>
         </section>
       ) : null}
 
-      <article className="prose prose-neutral max-w-none">
-        <div>{project.content}</div>
-      </article>
+      <article className="prose prose-neutral max-w-none">{content}</article>
     </main>
   );
 }
