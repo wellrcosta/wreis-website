@@ -11,14 +11,14 @@ export function generateStaticParams() {
   return getAllProjectSlugs().map((slug) => ({ slug }));
 }
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
-  const fullPath = path.join(
-    process.cwd(),
-    'src',
-    'content',
-    'projects',
-    `${params.slug}.mdx`,
-  );
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const fullPath = path.join(process.cwd(), 'src', 'content', 'projects', `${slug}.mdx`);
 
   let compiled: Awaited<ReturnType<typeof compileMdx<ProjectFrontmatter>>>;
   try {

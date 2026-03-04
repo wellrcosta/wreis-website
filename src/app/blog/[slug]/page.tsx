@@ -10,14 +10,14 @@ export function generateStaticParams() {
   return getAllPostSlugs().map((slug) => ({ slug }));
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const fullPath = path.join(
-    process.cwd(),
-    'src',
-    'content',
-    'posts',
-    `${params.slug}.mdx`,
-  );
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const fullPath = path.join(process.cwd(), 'src', 'content', 'posts', `${slug}.mdx`);
 
   let compiled: Awaited<ReturnType<typeof compileMdx<PostFrontmatter>>>;
   try {
