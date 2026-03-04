@@ -1,0 +1,28 @@
+name: Request
+description: Suggest an idea or request a feature/content update
+title: '[Request]: '
+labels: ['request']
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What do you want to request?
+      placeholder: 'Add a new project page for ...'
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Why is this useful?
+      placeholder: 'This would help recruiters understand ...'
+    validations:
+      required: false
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Notes
+      options:
+        - label: I understand this is a public repository.
+          required: true

@@ -1,0 +1,11 @@
+name: Idea
+description: Drop an idea (content, design, UX)
+title: '[Idea]: '
+labels: ['idea']
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+    validations:
+      required: true

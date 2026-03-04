@@ -1,0 +1,25 @@
+name: Bug
+description: Report an issue on the website
+title: '[Bug]: '
+labels: ['bug']
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      placeholder: 'The /projects page crashes when ...'
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: false
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      placeholder: 'https://wreis.rocks/...'
+    validations:
+      required: false
