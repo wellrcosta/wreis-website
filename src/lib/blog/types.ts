@@ -3,6 +3,7 @@ export type PostFrontmatter = {
   date: string;
   summary: string;
   tags?: string[];
+  featured?: boolean;
 };
 
 export type Post = {

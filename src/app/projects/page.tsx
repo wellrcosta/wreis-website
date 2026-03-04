@@ -9,7 +9,7 @@ export default function ProjectsPage() {
   const projects = getAllProjects();
 
   return (
-    <main className="mx-auto max-w-5xl space-y-6 px-6 py-16">
+    <main className="mx-auto max-w-5xl space-y-8 px-6 py-16">
       <header className="space-y-2">
         <h1 className="text-2xl font-bold">Projects</h1>
         <p className="text-muted-foreground">
@@ -19,7 +19,7 @@ export default function ProjectsPage() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((p) => (
-          <Card key={p.slug}>
+          <Card key={p.slug} className="hover:bg-accent/30 transition-colors">
             <CardHeader className="space-y-2">
               <CardTitle className="text-base">
                 <Link className="underline" href={`/projects/${p.slug}`}>
