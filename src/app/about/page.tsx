@@ -1,59 +1,128 @@
+import Link from 'next/link';
+
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { site } from '@/config/site';
 
-export default function NowPage() {
+const coreStack = [
+  'TypeScript',
+  'Node.js',
+  'NestJS',
+  'PostgreSQL',
+  'Prisma',
+  'Next.js',
+  'Docker',
+  'GitHub Actions',
+];
+
+export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-5xl space-y-6 px-6 py-16">
+    <main className="mx-auto max-w-5xl space-y-8 px-6 py-16">
       <header className="space-y-2">
-        <h1 className="text-2xl font-bold">Now</h1>
-        <p className="text-muted-foreground">What I&apos;m focused on right now.</p>
+        <h1 className="text-2xl font-bold">About</h1>
+        <p className="text-muted-foreground">
+          I build integration-heavy systems with a focus on reliability and clean
+          engineering.
+        </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <section className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Work</CardTitle>
+            <CardTitle>Who I am</CardTitle>
           </CardHeader>
-          <CardContent className="text-muted-foreground space-y-2 text-sm">
+          <CardContent className="text-muted-foreground space-y-3 text-sm">
             <p>
-              I&apos;m currently working as a software engineer, building and maintaining
-              production systems.
+              I&apos;m Wellington Reis, a software engineer focused on backend and
+              full-stack delivery.
             </p>
             <p>
-              (We can tailor this section with your exact role/company and key
-              highlights.)
+              My day-to-day work involves building integrations and messaging solutions
+              (including WhatsApp APIs), designing reliable flows, and shipping
+              maintainable code.
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Focus</CardTitle>
+            <CardTitle>What I do</CardTitle>
           </CardHeader>
-          <CardContent className="text-muted-foreground space-y-2 text-sm">
-            <ul className="list-disc space-y-1 pl-5">
-              <li>Backend & full-stack delivery</li>
-              <li>Auth, domain modeling, and APIs</li>
-              <li>CI/CD and operational hardening</li>
+          <CardContent className="text-muted-foreground text-sm">
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                Design and implement integration layers (APIs, webhooks, queues,
+                providers).
+              </li>
+              <li>
+                Build messaging and automation workflows with strong operational
+                guardrails.
+              </li>
+              <li>
+                Improve DX and delivery: CI/CD, tests, observability, and safer deploys.
+              </li>
+              <li>
+                Keep systems boring (in a good way): predictable behavior, clear
+                boundaries, and good defaults.
+              </li>
             </ul>
           </CardContent>
         </Card>
+      </section>
 
-        <Card className="sm:col-span-2">
+      <Card>
+        <CardHeader>
+          <CardTitle>Core stack</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-wrap gap-2">
+            {coreStack.map((s) => (
+              <Badge key={s} variant="secondary">
+                {s}
+              </Badge>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      <section className="grid gap-4 md:grid-cols-2">
+        <Card>
           <CardHeader>
-            <CardTitle>Contact</CardTitle>
+            <CardTitle>Links</CardTitle>
           </CardHeader>
-          <CardContent className="text-sm">
-            <a className="underline" href={site.links.email}>
-              Email
-            </a>{' '}
-            ·{' '}
+          <CardContent className="space-y-2 text-sm">
+            <a className="underline" href={site.links.github} target="_blank">
+              GitHub
+            </a>
+            <br />
             <a className="underline" href={site.links.linkedin} target="_blank">
               LinkedIn
             </a>
+            <br />
+            <a className="underline" href={site.links.email}>
+              Email
+            </a>
           </CardContent>
         </Card>
-      </div>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Next</CardTitle>
+          </CardHeader>
+          <CardContent className="text-muted-foreground space-y-3 text-sm">
+            <p>If you want to quickly see what I build, check the projects page.</p>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild>
+                <Link href="/projects">View projects</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/contact">Contact</Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
     </main>
   );
 }
