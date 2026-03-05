@@ -8,6 +8,9 @@ export type ProjectFrontmatter = {
   };
   highlights?: string[];
   featured?: boolean;
+  role?: string;
+  scope?: string[];
+  keyDecisions?: string[];
 };
 
 export type Project = {

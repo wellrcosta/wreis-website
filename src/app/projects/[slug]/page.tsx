@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { Toc } from '@/components/toc';
 import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getAllProjectSlugs } from '@/lib/projects/projects';
 import type { ProjectFrontmatter } from '@/lib/projects/types';
 import { compileMdx } from '@/lib/mdx';
@@ -50,22 +51,61 @@ export default async function ProjectPage({
               </div>
             ) : null}
 
-            <div className="text-sm">
-              {frontmatter.links?.repo ? (
-                <a className="underline" href={frontmatter.links.repo} target="_blank">
-                  Repository
-                </a>
-              ) : null}
-              {frontmatter.links?.live ? (
-                <>
-                  {' · '}
-                  <a className="underline" href={frontmatter.links.live} target="_blank">
-                    Live
+            {(frontmatter.links?.repo || frontmatter.links?.live) && (
+              <div className="text-sm">
+                {frontmatter.links?.repo ? (
+                  <a className="underline" href={frontmatter.links.repo} target="_blank">
+                    Repository
                   </a>
-                </>
-              ) : null}
-            </div>
+                ) : null}
+                {frontmatter.links?.live ? (
+                  <>
+                    {' · '}
+                    <a
+                      className="underline"
+                      href={frontmatter.links.live}
+                      target="_blank"
+                    >
+                      Live
+                    </a>
+                  </>
+                ) : null}
+              </div>
+            )}
           </header>
+
+          {(frontmatter.role || frontmatter.scope?.length) && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-base">Role & scope</CardTitle>
+              </CardHeader>
+              <CardContent className="text-muted-foreground space-y-2 text-sm">
+                {frontmatter.role ? <p>Role: {frontmatter.role}</p> : null}
+                {frontmatter.scope?.length ? (
+                  <ul className="list-disc space-y-1 pl-5">
+                    {frontmatter.scope.map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </CardContent>
+            </Card>
+          )}
+
+          {frontmatter.keyDecisions?.length ? (
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-base">Key decisions</CardTitle>
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm">
+                <ul className="list-disc space-y-1 pl-5">
+                  {frontmatter.keyDecisions.map((d) => (
+                    <li key={d}>{d}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ) : null}
 
           {frontmatter.highlights?.length ? (
             <section className="space-y-2">
