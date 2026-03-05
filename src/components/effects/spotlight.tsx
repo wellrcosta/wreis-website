@@ -11,16 +11,18 @@ export function Spotlight({ className }: { className?: string }) {
     const el = ref.current;
     if (!el) return;
 
+    const element = el;
+
     function onMove(e: PointerEvent) {
-      const rect = el.getBoundingClientRect();
+      const rect = element.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      el.style.setProperty('--x', `${x}px`);
-      el.style.setProperty('--y', `${y}px`);
+      element.style.setProperty('--x', `${x}px`);
+      element.style.setProperty('--y', `${y}px`);
     }
 
-    el.addEventListener('pointermove', onMove);
-    return () => el.removeEventListener('pointermove', onMove);
+    element.addEventListener('pointermove', onMove);
+    return () => element.removeEventListener('pointermove', onMove);
   }, []);
 
   return (
