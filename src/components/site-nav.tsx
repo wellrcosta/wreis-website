@@ -12,7 +12,7 @@ const links = [
 
 export function SiteNav() {
   return (
-    <header className="bg-background/60 border-b backdrop-blur">
+    <header className="bg-background/60 sticky top-0 z-50 border-b backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Logo />
 
