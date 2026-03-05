@@ -29,6 +29,9 @@ export default function ProjectsPage() {
                 {featured.frontmatter.title}
               </Link>
             </CardTitle>
+            {featured.frontmatter.role ? (
+              <p className="text-muted-foreground text-xs">{featured.frontmatter.role}</p>
+            ) : null}
             <p className="text-muted-foreground text-sm">
               {featured.frontmatter.summary}
             </p>
@@ -87,6 +90,9 @@ export default function ProjectsPage() {
                     {p.frontmatter.title}
                   </Link>
                 </CardTitle>
+                {p.frontmatter.role ? (
+                  <p className="text-muted-foreground text-xs">{p.frontmatter.role}</p>
+                ) : null}
                 <p className="text-muted-foreground text-sm">{p.frontmatter.summary}</p>
               </CardHeader>
 
