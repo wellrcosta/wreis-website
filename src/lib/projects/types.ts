@@ -7,6 +7,7 @@ export type ProjectFrontmatter = {
     live?: string;
   };
   highlights?: string[];
+  featured?: boolean;
 };
 
 export type Project = {
