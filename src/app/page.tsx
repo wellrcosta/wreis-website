@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { GradientBorder } from '@/components/effects/gradient-border';
 import { Bento } from '@/components/sections/bento';
+import { Featured } from '@/components/sections/featured';
 import { Button } from '@/components/ui/button';
 import { site } from '@/config/site';
 
@@ -49,6 +50,8 @@ export default function HomePage() {
       </GradientBorder>
 
       <Bento />
+
+      <Featured />
     </main>
   );
 }
