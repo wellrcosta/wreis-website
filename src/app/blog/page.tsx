@@ -14,7 +14,10 @@ export default function BlogPage() {
     <main className="mx-auto max-w-5xl space-y-8 px-6 py-16">
       <header className="space-y-2">
         <h1 className="text-2xl font-bold">Blog</h1>
-        <p className="text-muted-foreground">Writing, notes, and deep dives.</p>
+        <p className="text-muted-foreground">
+          Short posts about real-world engineering: integrations, CI, auth, and
+          maintainability.
+        </p>
       </header>
 
       {featured ? (

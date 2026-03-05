@@ -22,8 +22,8 @@ export default function AboutPage() {
       <header className="space-y-2">
         <h1 className="text-2xl font-bold">About</h1>
         <p className="text-muted-foreground">
-          I build integration-heavy systems with a focus on reliability and clean
-          engineering.
+          I build integration-heavy systems with a focus on reliability, clarity, and
+          clean engineering.
         </p>
       </header>
 

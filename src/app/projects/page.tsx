@@ -13,7 +13,7 @@ export default function ProjectsPage() {
       <header className="space-y-2">
         <h1 className="text-2xl font-bold">Projects</h1>
         <p className="text-muted-foreground">
-          A curated list of projects I&apos;ve shipped and learned from.
+          A curated list of projects I&apos;ve shipped, maintained, and learned from.
         </p>
       </header>
 
