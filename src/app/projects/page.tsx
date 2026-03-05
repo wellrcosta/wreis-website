@@ -1,9 +1,48 @@
 import Link from 'next/link';
 
+import { ArrowRight, ExternalLink } from 'lucide-react';
+
+import { PageHero } from '@/components/page-hero';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getAllProjects } from '@/lib/projects/projects';
+
+function ProjectActions({
+  href,
+  repo,
+  live,
+}: {
+  href: string;
+  repo?: string;
+  live?: string;
+}) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      <Button asChild size="sm" variant="outline">
+        <Link href={href}>
+          Details <ArrowRight className="h-4 w-4" />
+        </Link>
+      </Button>
+
+      {repo ? (
+        <Button asChild size="sm" variant="secondary">
+          <a href={repo} target="_blank">
+            Repo <ExternalLink className="h-4 w-4" />
+          </a>
+        </Button>
+      ) : null}
+
+      {live ? (
+        <Button asChild size="sm" variant="secondary">
+          <a href={live} target="_blank">
+            Live <ExternalLink className="h-4 w-4" />
+          </a>
+        </Button>
+      ) : null}
+    </div>
+  );
+}
 
 export default function ProjectsPage() {
   const projects = getAllProjects();
@@ -13,12 +52,15 @@ export default function ProjectsPage() {
 
   return (
     <main className="mx-auto max-w-5xl space-y-8 px-6 py-16">
-      <header className="space-y-2">
-        <h1 className="text-2xl font-bold">Projects</h1>
-        <p className="text-muted-foreground">
-          A curated list of projects I&apos;ve shipped, maintained, and learned from.
-        </p>
-      </header>
+      <PageHero
+        title="Projects"
+        subtitle="A curated list of projects I’ve shipped, maintained, and learned from."
+        meta={
+          <Badge variant="secondary">
+            {projects.length} {projects.length === 1 ? 'project' : 'projects'}
+          </Badge>
+        }
+      />
 
       {featured ? (
         <Card className="overflow-hidden">
@@ -56,25 +98,11 @@ export default function ProjectsPage() {
               </ul>
             ) : null}
 
-            <div className="flex flex-wrap gap-2">
-              <Button asChild size="sm" variant="outline">
-                <Link href={`/projects/${featured.slug}`}>Details</Link>
-              </Button>
-              {featured.frontmatter.links?.repo ? (
-                <Button asChild size="sm" variant="secondary">
-                  <a href={featured.frontmatter.links.repo} target="_blank">
-                    Repo
-                  </a>
-                </Button>
-              ) : null}
-              {featured.frontmatter.links?.live ? (
-                <Button asChild size="sm" variant="secondary">
-                  <a href={featured.frontmatter.links.live} target="_blank">
-                    Live
-                  </a>
-                </Button>
-              ) : null}
-            </div>
+            <ProjectActions
+              href={`/projects/${featured.slug}`}
+              repo={featured.frontmatter.links?.repo}
+              live={featured.frontmatter.links?.live}
+            />
           </CardContent>
         </Card>
       ) : null}
@@ -83,7 +111,7 @@ export default function ProjectsPage() {
         <h2 className="text-lg font-semibold">More projects</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {rest.map((p) => (
-            <Card key={p.slug} className="hover:bg-accent/30 transition-colors">
+            <Card key={p.slug} className="hover:bg-accent/20 transition-colors">
               <CardHeader className="space-y-2">
                 <CardTitle className="text-base">
                   <Link className="underline" href={`/projects/${p.slug}`}>
@@ -99,7 +127,7 @@ export default function ProjectsPage() {
               <CardContent className="space-y-4">
                 {p.frontmatter.stack?.length ? (
                   <div className="flex flex-wrap gap-2">
-                    {p.frontmatter.stack.map((s) => (
+                    {p.frontmatter.stack.slice(0, 8).map((s) => (
                       <Badge key={s} variant="secondary">
                         {s}
                       </Badge>
@@ -115,25 +143,11 @@ export default function ProjectsPage() {
                   </ul>
                 ) : null}
 
-                <div className="flex flex-wrap gap-2">
-                  <Button asChild size="sm" variant="outline">
-                    <Link href={`/projects/${p.slug}`}>Details</Link>
-                  </Button>
-                  {p.frontmatter.links?.repo ? (
-                    <Button asChild size="sm" variant="secondary">
-                      <a href={p.frontmatter.links.repo} target="_blank">
-                        Repo
-                      </a>
-                    </Button>
-                  ) : null}
-                  {p.frontmatter.links?.live ? (
-                    <Button asChild size="sm" variant="secondary">
-                      <a href={p.frontmatter.links.live} target="_blank">
-                        Live
-                      </a>
-                    </Button>
-                  ) : null}
-                </div>
+                <ProjectActions
+                  href={`/projects/${p.slug}`}
+                  repo={p.frontmatter.links?.repo}
+                  live={p.frontmatter.links?.live}
+                />
               </CardContent>
             </Card>
           ))}
