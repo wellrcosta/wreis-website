@@ -1,7 +1,6 @@
-import Link from 'next/link';
-
-import { Button } from '@/components/ui/button';
-import { site } from '@/config/site';
+import { Logo } from '@/components/logo';
+import { MobileNav } from '@/components/mobile-nav';
+import { NavLink } from '@/components/nav-link';
 
 const links = [
   { href: '/about', label: 'About' },
@@ -13,18 +12,17 @@ const links = [
 
 export function SiteNav() {
   return (
-    <header className="border-b">
+    <header className="bg-background/60 border-b backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-semibold">
-          {site.name}
-        </Link>
-        <nav className="flex gap-2">
+        <Logo />
+
+        <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
-            <Button key={l.href} asChild variant="ghost" size="sm">
-              <Link href={l.href}>{l.label}</Link>
-            </Button>
+            <NavLink key={l.href} href={l.href} label={l.label} />
           ))}
         </nav>
+
+        <MobileNav />
       </div>
     </header>
   );
