@@ -11,12 +11,19 @@ export function PageHero({
 }) {
   return (
     <GradientBorder>
-      <header className="space-y-4 rounded-2xl p-8 md:p-10">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">{title}</h1>
-          {subtitle ? <p className="text-muted-foreground">{subtitle}</p> : null}
+      <header className="rounded-2xl p-8 md:p-10">
+        <div className="space-y-3">
+          <h1 className="text-3xl font-bold tracking-tight md:text-5xl">{title}</h1>
+          {subtitle ? (
+            <p className="text-muted-foreground max-w-3xl text-base md:text-lg">
+              {subtitle}
+            </p>
+          ) : null}
         </div>
-        {meta ? <div className="flex flex-wrap items-center gap-3">{meta}</div> : null}
+
+        {meta ? (
+          <div className="mt-5 flex flex-wrap items-center gap-2">{meta}</div>
+        ) : null}
       </header>
     </GradientBorder>
   );
