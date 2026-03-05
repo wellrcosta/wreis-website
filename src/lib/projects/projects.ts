@@ -32,6 +32,18 @@ export function getProjectBySlug(slug: string): Project {
   };
 }
 
+function safeDate(dateStr: string | undefined) {
+  if (!dateStr) return new Date(0);
+  const d = new Date(dateStr);
+  return Number.isNaN(d.getTime()) ? new Date(0) : d;
+}
+
 export function getAllProjects(): Project[] {
-  return getAllProjectSlugs().map((slug) => getProjectBySlug(slug));
+  return getAllProjectSlugs()
+    .map((slug) => getProjectBySlug(slug))
+    .sort((a, b) => {
+      const ad = safeDate(a.frontmatter.date);
+      const bd = safeDate(b.frontmatter.date);
+      return bd.getTime() - ad.getTime();
+    });
 }
