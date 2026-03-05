@@ -25,12 +25,17 @@ export default function HomePage() {
             <p className="text-muted-foreground text-sm">{site.url}</p>
 
             <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
-              Building integration-heavy systems.
+              Backend & full-stack engineering.
             </h1>
 
             <p className="text-muted-foreground max-w-2xl text-lg">
-              {site.name}. Backend & full-stack engineering — integrations, messaging
-              (WhatsApp APIs), and production hardening.
+              {site.name}. I build solutions end-to-end — from APIs and services to
+              internal tooling, with a strong focus on delivery and observability.
+            </p>
+
+            <p className="text-muted-foreground max-w-2xl text-sm">
+              Current focus: integrations and messaging (WhatsApp APIs) — but not limited
+              to it.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
