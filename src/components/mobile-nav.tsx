@@ -18,7 +18,7 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="md:hidden">
+    <div className="relative md:hidden">
       <Button
         variant="outline"
         size="sm"
@@ -30,7 +30,7 @@ export function MobileNav() {
 
       <div
         className={cn(
-          'bg-card/80 mt-3 rounded-xl border p-2 backdrop-blur',
+          'bg-card/90 absolute top-full right-0 z-50 mt-2 w-56 rounded-xl border p-2 backdrop-blur',
           open ? 'block' : 'hidden',
         )}
       >
