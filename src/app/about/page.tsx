@@ -73,6 +73,20 @@ export default function AboutPage() {
 
       <Card>
         <CardHeader>
+          <CardTitle>Highlights</CardTitle>
+        </CardHeader>
+        <CardContent className="text-muted-foreground text-sm">
+          <ul className="list-disc space-y-2 pl-5">
+            <li>Integration-heavy solutions (APIs, webhooks, providers)</li>
+            <li>Messaging and automation flows (including WhatsApp APIs)</li>
+            <li>Operational reliability: observability, safer deploys, CI/CD</li>
+            <li>Clean code and maintainability under real constraints</li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
           <CardTitle>Core stack</CardTitle>
         </CardHeader>
         <CardContent>

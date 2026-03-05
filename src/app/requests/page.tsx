@@ -1,7 +1,10 @@
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { site } from '@/config/site';
 
-const issuesBase = `${site.links.github}/wreis-website/issues/new/choose`;
+const repoBase = `${site.links.github}/wreis-website`;
+const choose = `${repoBase}/issues/new/choose`;
+const requestTemplate = `${repoBase}/issues/new?template=request.yml`;
 
 export default function RequestsPage() {
   return (
@@ -9,28 +12,52 @@ export default function RequestsPage() {
       <header className="space-y-2">
         <h1 className="text-2xl font-bold">Requests</h1>
         <p className="text-muted-foreground">
-          Want to suggest an improvement or request a new section/post?
+          Suggestions and improvements are tracked via GitHub Issues (public).
         </p>
       </header>
 
-      <div className="space-y-3">
-        <p className="text-muted-foreground text-sm">
-          Requests are tracked via GitHub Issues (public). If you prefer a private
-          message, use the Contact page.
-        </p>
+      <div className="grid gap-4 md:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Public requests</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-muted-foreground text-sm">
+              Use GitHub Issues for feature/content requests and bug reports.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild>
+                <a href={requestTemplate} target="_blank">
+                  New request
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={choose} target="_blank">
+                  Choose a template
+                </a>
+              </Button>
+              <Button asChild variant="secondary">
+                <a href={`${repoBase}/issues`} target="_blank">
+                  View issues
+                </a>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
-        <div className="flex flex-wrap gap-3">
-          <Button asChild>
-            <a href={issuesBase} target="_blank">
-              Create a request
-            </a>
-          </Button>
-          <Button asChild variant="outline">
-            <a href={`${site.links.github}/wreis-website/issues`} target="_blank">
-              View requests
-            </a>
-          </Button>
-        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Private contact</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-muted-foreground text-sm">
+              Recruiting, partnerships, or anything sensitive: email is best.
+            </p>
+            <Button asChild variant="outline">
+              <a href={site.links.email}>Email</a>
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     </main>
   );
