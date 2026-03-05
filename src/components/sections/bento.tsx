@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 export function Bento() {
   return (
     <section className="grid gap-4 md:grid-cols-3">
-      <Card className="hover:bg-accent/20 transition-colors md:col-span-2">
+      <Card className="md:col-span-2">
         <CardHeader>
           <CardTitle>Backend & full-stack delivery</CardTitle>
         </CardHeader>
@@ -26,7 +26,7 @@ export function Bento() {
         </CardContent>
       </Card>
 
-      <Card className="hover:bg-accent/20 transition-colors">
+      <Card>
         <CardHeader>
           <CardTitle>Quick links</CardTitle>
         </CardHeader>
@@ -56,7 +56,7 @@ export function Bento() {
         </CardContent>
       </Card>
 
-      <Card className="hover:bg-accent/20 transition-colors">
+      <Card>
         <CardHeader>
           <CardTitle>What I value</CardTitle>
         </CardHeader>
@@ -67,7 +67,7 @@ export function Bento() {
         </CardContent>
       </Card>
 
-      <Card className="hover:bg-accent/20 transition-colors">
+      <Card>
         <CardHeader>
           <CardTitle>Impact mindset</CardTitle>
         </CardHeader>
@@ -78,7 +78,7 @@ export function Bento() {
         </CardContent>
       </Card>
 
-      <Card className="hover:bg-accent/20 transition-colors md:col-span-2">
+      <Card className="md:col-span-2">
         <CardHeader>
           <CardTitle>Writing</CardTitle>
         </CardHeader>
