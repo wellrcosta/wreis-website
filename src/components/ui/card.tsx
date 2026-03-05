@@ -2,21 +2,26 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+export function Card({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={cn(
-        // Base: no visible border. On hover: show a subtle gradient border (same palette used across the site).
-        'bg-card/60 text-card-foreground hover:bg-card/70 relative rounded-xl border border-transparent backdrop-blur transition-all',
-        // Gradient border via masked pseudo-element (only visible on hover)
-        "before:pointer-events-none before:absolute before:inset-0 before:rounded-xl before:p-[1px] before:opacity-0 before:transition-opacity before:content-[''] hover:before:opacity-100",
-        'before:bg-gradient-to-br before:from-indigo-500/55 before:via-sky-500/25 before:to-rose-500/50',
-        // mask: keep only the 1px border (standard + webkit)
-        'before:[mask-composite:exclude] before:[-webkit-mask-composite:xor] before:[-webkit-mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]',
+        // Always reserve 1px for the border, but keep it transparent until hover.
+        // This avoids layout shift and guarantees the gradient is BORDER-ONLY.
+        'rounded-xl p-px transition-colors',
+        'bg-transparent hover:bg-gradient-to-br hover:from-indigo-500/55 hover:via-sky-500/25 hover:to-rose-500/50',
         className,
       )}
       {...props}
-    />
+    >
+      <div className="bg-card/60 text-card-foreground hover:bg-card/70 rounded-[11px] border border-transparent shadow-[0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur transition-colors">
+        {children}
+      </div>
+    </div>
   );
 }
 
