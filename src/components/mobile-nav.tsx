@@ -30,7 +30,7 @@ export function MobileNav() {
 
       <div
         className={cn(
-          'bg-card/95 absolute top-full right-0 z-[60] mt-2 w-56 rounded-xl border p-2 shadow-lg shadow-black/40 backdrop-blur',
+          'absolute top-full right-0 z-[60] mt-2 w-56 rounded-xl border bg-[hsl(var(--card)/0.96)] p-2 shadow-lg ring-1 shadow-black/40 ring-white/10 backdrop-blur',
           open ? 'block' : 'hidden',
         )}
       >
