@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -43,13 +43,13 @@ export function Featured() {
             <div className="flex flex-wrap gap-2">
               <Button asChild size="sm" variant="outline">
                 <Link href={`/projects/${featuredProject.slug}`}>
-                  Read <ArrowRight className="h-4 w-4" />
+                  Details <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               {featuredProject.frontmatter.links?.repo ? (
                 <Button asChild size="sm" variant="secondary">
                   <a href={featuredProject.frontmatter.links.repo} target="_blank">
-                    Repo <ArrowRight className="h-4 w-4" />
+                    Repo <ExternalLink className="h-4 w-4" />
                   </a>
                 </Button>
               ) : null}
