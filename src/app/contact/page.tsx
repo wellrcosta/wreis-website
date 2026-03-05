@@ -3,11 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { site } from '@/config/site';
 
 const topics = [
-  'Integrations',
-  'Messaging / WhatsApp APIs',
-  'Backend systems',
+  'Backend & full-stack delivery',
+  'Integrations (APIs / webhooks)',
+  'Internal tooling',
+  'Observability',
   'CI/CD and automation',
-  'Architecture and refactoring',
 ];
 
 export default function ContactPage() {

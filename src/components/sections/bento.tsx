@@ -8,18 +8,20 @@ export function Bento() {
     <section className="grid gap-4 md:grid-cols-3">
       <Card className="hover:bg-accent/20 transition-colors md:col-span-2">
         <CardHeader>
-          <CardTitle>Integration + messaging engineering</CardTitle>
+          <CardTitle>Backend & full-stack delivery</CardTitle>
         </CardHeader>
         <CardContent className="text-muted-foreground space-y-3 text-sm">
           <p>
-            I build integration-heavy systems: APIs, webhooks, queues, provider adapters,
-            and operational tooling.
+            I build solutions end-to-end: services, APIs, internal tooling, and the
+            operational foundations to run them (observability, CI/CD, and reliability).
           </p>
           <div className="flex flex-wrap gap-2">
-            <Badge variant="secondary">Integrations</Badge>
-            <Badge variant="secondary">WhatsApp APIs</Badge>
-            <Badge variant="secondary">Queues</Badge>
-            <Badge variant="secondary">Reliability</Badge>
+            <Badge variant="secondary">Node.js / TypeScript</Badge>
+            <Badge variant="secondary">.NET</Badge>
+            <Badge variant="secondary">Go</Badge>
+            <Badge variant="secondary">Azure</Badge>
+            <Badge variant="secondary">Observability</Badge>
+            <Badge variant="secondary">Integrations (current focus)</Badge>
           </div>
         </CardContent>
       </Card>
@@ -81,8 +83,8 @@ export function Bento() {
           <CardTitle>Writing</CardTitle>
         </CardHeader>
         <CardContent className="text-muted-foreground text-sm">
-          Short posts about real problems: integrations, CI friction, auth gotchas, and
-          building maintainable code.
+          Short posts about real problems: delivery constraints, CI friction, auth
+          gotchas, and building maintainable systems.
         </CardContent>
       </Card>
     </section>
