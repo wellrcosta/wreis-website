@@ -1,6 +1,9 @@
 import Link from 'next/link';
 
+import { ArrowRight } from 'lucide-react';
+
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getAllPosts } from '@/lib/blog/posts';
 import { getAllProjects } from '@/lib/projects/projects';
@@ -26,16 +29,31 @@ export function Featured() {
               {featuredProject.frontmatter.summary}
             </p>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-4">
             {featuredProject.frontmatter.stack?.length ? (
               <div className="flex flex-wrap gap-2">
-                {featuredProject.frontmatter.stack.slice(0, 5).map((s) => (
+                {featuredProject.frontmatter.stack.slice(0, 6).map((s) => (
                   <Badge key={s} variant="secondary">
                     {s}
                   </Badge>
                 ))}
               </div>
             ) : null}
+
+            <div className="flex flex-wrap gap-2">
+              <Button asChild size="sm" variant="outline">
+                <Link href={`/projects/${featuredProject.slug}`}>
+                  Read <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              {featuredProject.frontmatter.links?.repo ? (
+                <Button asChild size="sm" variant="secondary">
+                  <a href={featuredProject.frontmatter.links.repo} target="_blank">
+                    Repo <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              ) : null}
+            </div>
           </CardContent>
         </Card>
       ) : null}
@@ -53,16 +71,22 @@ export function Featured() {
               {featuredPost.frontmatter.summary}
             </p>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-4">
             {featuredPost.frontmatter.tags?.length ? (
               <div className="flex flex-wrap gap-2">
-                {featuredPost.frontmatter.tags.slice(0, 5).map((t) => (
+                {featuredPost.frontmatter.tags.slice(0, 6).map((t) => (
                   <Badge key={t} variant="secondary">
                     {t}
                   </Badge>
                 ))}
               </div>
             ) : null}
+
+            <Button asChild size="sm" variant="outline">
+              <Link href={`/blog/${featuredPost.slug}`}>
+                Read <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </CardContent>
         </Card>
       ) : null}

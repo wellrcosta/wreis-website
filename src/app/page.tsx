@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { ArrowRight, Mail } from 'lucide-react';
+
 import { GradientBorder } from '@/components/effects/gradient-border';
 import { Spotlight } from '@/components/effects/spotlight';
 import { Bento } from '@/components/sections/bento';
@@ -16,6 +18,10 @@ export default function HomePage() {
           <Spotlight />
 
           <div className="relative space-y-5">
+            <p className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+              Software Engineer
+            </p>
+
             <p className="text-muted-foreground text-sm">{site.url}</p>
 
             <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
@@ -29,13 +35,17 @@ export default function HomePage() {
 
             <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild>
-                <Link href="/projects">View projects</Link>
+                <Link href="/projects">
+                  View projects <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
               <Button asChild variant="secondary">
                 <Link href="/about">About</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/contact">Contact</Link>
+                <Link href="/contact">
+                  Contact <Mail className="h-4 w-4" />
+                </Link>
               </Button>
             </div>
 

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export function Bento() {
@@ -7,17 +8,19 @@ export function Bento() {
     <section className="grid gap-4 md:grid-cols-3">
       <Card className="hover:bg-accent/20 transition-colors md:col-span-2">
         <CardHeader>
-          <CardTitle>Building reliable systems</CardTitle>
+          <CardTitle>Integration + messaging engineering</CardTitle>
         </CardHeader>
-        <CardContent className="text-muted-foreground space-y-2 text-sm">
+        <CardContent className="text-muted-foreground space-y-3 text-sm">
           <p>
-            I focus on backend and full-stack work with strong fundamentals: clean
-            boundaries, pragmatic DX, and production hardening.
+            I build integration-heavy systems: APIs, webhooks, queues, provider adapters,
+            and operational tooling.
           </p>
-          <p>
-            From auth and domain modeling to CI and observability — I like when the boring
-            parts are rock-solid.
-          </p>
+          <div className="flex flex-wrap gap-2">
+            <Badge variant="secondary">Integrations</Badge>
+            <Badge variant="secondary">WhatsApp APIs</Badge>
+            <Badge variant="secondary">Queues</Badge>
+            <Badge variant="secondary">Reliability</Badge>
+          </div>
         </CardContent>
       </Card>
 
@@ -42,6 +45,11 @@ export function Bento() {
                 Requests
               </Link>
             </li>
+            <li>
+              <Link className="underline" href="/about">
+                About
+              </Link>
+            </li>
           </ul>
         </CardContent>
       </Card>
@@ -54,6 +62,17 @@ export function Bento() {
           <p>Clarity over cleverness.</p>
           <p>Small, safe increments.</p>
           <p>Ownership and delivery.</p>
+        </CardContent>
+      </Card>
+
+      <Card className="hover:bg-accent/20 transition-colors">
+        <CardHeader>
+          <CardTitle>Impact mindset</CardTitle>
+        </CardHeader>
+        <CardContent className="text-muted-foreground space-y-2 text-sm">
+          <p>Make systems observable.</p>
+          <p>Reduce operational surprises.</p>
+          <p>Ship boring reliability.</p>
         </CardContent>
       </Card>
 
