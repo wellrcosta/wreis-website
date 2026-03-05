@@ -6,7 +6,13 @@ export function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElemen
   return (
     <div
       className={cn(
-        'bg-card/60 text-card-foreground hover:bg-card/70 rounded-xl border shadow-[0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur transition-all hover:border-white/15',
+        // Base: no visible border. On hover: show a subtle gradient border (same palette used across the site).
+        'bg-card/60 text-card-foreground hover:bg-card/70 relative rounded-xl border border-transparent backdrop-blur transition-all',
+        // Gradient border via masked pseudo-element (only visible on hover)
+        'before:pointer-events-none before:absolute before:inset-0 before:rounded-xl before:p-[1px] before:opacity-0 before:transition-opacity hover:before:opacity-100',
+        'before:bg-gradient-to-br before:from-indigo-500/45 before:via-sky-500/20 before:to-rose-500/40',
+        // mask: keep only the 1px border
+        'before:[mask-composite:exclude] before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]',
         className,
       )}
       {...props}
