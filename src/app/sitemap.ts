@@ -1,8 +1,14 @@
 import type { MetadataRoute } from 'next';
 
+import { getAllPosts } from '@/lib/blog/posts';
 import { site } from '@/config/site';
-import { getAllPostSlugs } from '@/lib/blog/posts';
-import { getAllProjectSlugs } from '@/lib/projects/projects';
+import { getAllProjects } from '@/lib/projects/projects';
+
+function safeDate(dateStr: string | undefined) {
+  if (!dateStr) return new Date();
+  const d = new Date(dateStr);
+  return Number.isNaN(d.getTime()) ? new Date() : d;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ['/', '/about', '/blog', '/projects', '/requests', '/contact'].map(
@@ -12,13 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  const posts = getAllPostSlugs().map((slug) => ({
-    url: `${site.url}/blog/${slug}`,
-    lastModified: new Date(),
+  const posts = getAllPosts().map((p) => ({
+    url: `${site.url}/blog/${p.slug}`,
+    lastModified: safeDate(p.frontmatter.date),
   }));
 
-  const projects = getAllProjectSlugs().map((slug) => ({
-    url: `${site.url}/projects/${slug}`,
+  const projects = getAllProjects().map((p) => ({
+    url: `${site.url}/projects/${p.slug}`,
     lastModified: new Date(),
   }));
 
