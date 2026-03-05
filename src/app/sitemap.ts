@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projects = getAllProjects().map((p) => ({
     url: `${site.url}/projects/${p.slug}`,
-    lastModified: new Date(),
+    lastModified: safeDate(p.frontmatter.date),
   }));
 
   return [...pages, ...posts, ...projects];

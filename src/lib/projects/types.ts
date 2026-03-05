@@ -1,6 +1,7 @@
 export type ProjectFrontmatter = {
   title: string;
   summary: string;
+  date?: string;
   stack?: string[];
   links?: {
     repo?: string;
