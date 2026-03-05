@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { GradientBorder } from '@/components/effects/gradient-border';
+import { Spotlight } from '@/components/effects/spotlight';
 import { Bento } from '@/components/sections/bento';
 import { Featured } from '@/components/sections/featured';
 import { Button } from '@/components/ui/button';
@@ -12,6 +13,8 @@ export default function HomePage() {
       <GradientBorder>
         <section className="relative overflow-hidden rounded-2xl p-10">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-rose-500/10" />
+          <Spotlight />
+
           <div className="relative space-y-5">
             <p className="text-muted-foreground text-sm">{site.url}</p>
 

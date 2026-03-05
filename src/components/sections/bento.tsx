@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 export function Bento() {
   return (
     <section className="grid gap-4 md:grid-cols-3">
-      <Card className="md:col-span-2">
+      <Card className="hover:bg-accent/20 transition-colors md:col-span-2">
         <CardHeader>
           <CardTitle>Building reliable systems</CardTitle>
         </CardHeader>
@@ -21,7 +21,7 @@ export function Bento() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="hover:bg-accent/20 transition-colors">
         <CardHeader>
           <CardTitle>Quick links</CardTitle>
         </CardHeader>
@@ -46,7 +46,7 @@ export function Bento() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="hover:bg-accent/20 transition-colors">
         <CardHeader>
           <CardTitle>What I value</CardTitle>
         </CardHeader>
@@ -57,13 +57,13 @@ export function Bento() {
         </CardContent>
       </Card>
 
-      <Card className="md:col-span-2">
+      <Card className="hover:bg-accent/20 transition-colors md:col-span-2">
         <CardHeader>
           <CardTitle>Writing</CardTitle>
         </CardHeader>
         <CardContent className="text-muted-foreground text-sm">
-          Short posts about real problems: CI friction, auth gotchas, and building
-          maintainable code.
+          Short posts about real problems: integrations, CI friction, auth gotchas, and
+          building maintainable code.
         </CardContent>
       </Card>
     </section>
