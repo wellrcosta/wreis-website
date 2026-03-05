@@ -5,10 +5,12 @@ import { getAllPostSlugs } from '@/lib/blog/posts';
 import { getAllProjectSlugs } from '@/lib/projects/projects';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ['/', '/blog', '/projects', '/requests', '/contact'].map((p) => ({
-    url: `${site.url}${p}`,
-    lastModified: new Date(),
-  }));
+  const pages = ['/', '/about', '/blog', '/projects', '/requests', '/contact'].map(
+    (p) => ({
+      url: `${site.url}${p}`,
+      lastModified: new Date(),
+    }),
+  );
 
   const posts = getAllPostSlugs().map((slug) => ({
     url: `${site.url}/blog/${slug}`,
