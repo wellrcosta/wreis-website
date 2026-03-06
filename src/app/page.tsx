@@ -34,8 +34,7 @@ export default function HomePage() {
             </p>
 
             <p className="text-muted-foreground max-w-2xl text-sm">
-              Current focus: integrations and messaging (WhatsApp APIs) — but not limited
-              to it.
+              Current focus: integrations and messaging — but not limited to it.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">

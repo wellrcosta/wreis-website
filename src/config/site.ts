@@ -1,6 +1,6 @@
 export const site = {
   name: 'Wellington Reis',
-  title: 'Wellington Reis — Software Engineer',
+  title: 'Wellington Reis — Backend & Full-stack Engineer',
   description:
     'Backend & full-stack engineer building end-to-end solutions: services, APIs, internal tooling, and observability.',
   url: 'https://wreis.rocks',
