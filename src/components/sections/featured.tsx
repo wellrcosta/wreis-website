@@ -84,7 +84,7 @@ export function Featured() {
 
             <Button asChild size="sm" variant="outline">
               <Link href={`/blog/${featuredPost.slug}`}>
-                Read <ArrowRight className="h-4 w-4" />
+                Read post <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
           </CardContent>
